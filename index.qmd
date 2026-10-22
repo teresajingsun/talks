@@ -1,0 +1,14 @@
+---
+title: "Talks"
+---
+
+Presentations by Jing Sun. Each deck is a reveal.js presentation: open the link, press `F` for full screen, `S` for
+the speaker view, `?` for the keyboard shortcuts, and `Esc` for an overview of the slides.
+
+::: {.deck-list}
+
+| Date | Title | Deck |
+|---|---|---|
+| 2026-10-22 | Heat transfer and large-scale flow in a periodic-span box: key findings of the Pr–Ra sweep (report 09, for the collaborator) | [open](2026-10-prra-sweep-findings/) |
+
+:::

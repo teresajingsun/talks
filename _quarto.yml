@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - "20*/index.qmd"
+
+website:
+  title: "Talks"
+  site-url: "https://teresajingsun.github.io/talks/"
+  description: "Presentations by Jing Sun, published as reveal.js decks"
+  navbar: false
+
+format:
+  html:
+    theme: [default, site.scss]
+    toc: false
+    link-external-newwindow: true

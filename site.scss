@@ -1,0 +1,14 @@
+/*-- scss:defaults --*/
+// Index page of the talks repository: black on white, one signal blue
+// (the "spectra" palette of the personal website).
+$body-bg:        #FFFFFF;
+$body-color:     #000000;
+$link-color:     #0033CC;
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+$font-size-root: 16px;
+
+/*-- scss:rules --*/
+body { max-width: 52rem; margin: 0 auto; padding: 1rem 1.2rem; }
+h1 { font-size: 1.6rem; letter-spacing: -0.01em; }
+table { font-variant-numeric: tabular-nums; }
+.deck-list td { vertical-align: top; }

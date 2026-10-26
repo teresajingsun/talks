@@ -11,7 +11,7 @@ format:
     height: 720
     margin: 0.05
     slide-number: c/t
-    footer: "Pr–Ra sweep · findings for the collaborator · report 09 of 22 October 2026, revision 2 of 26 October 2026"
+    footer: "Pr–Ra sweep · findings for the collaborator · report 09 of 22 October 2026, revision 3 of 26 October 2026"
     transition: none
     background-transition: none
     auto-stretch: false
@@ -32,7 +32,7 @@ format:
 - In doing so it maps the heat transfer and the large-scale flow of a periodic-span box over seven decades of the Rayleigh number and seven of the Prandtl number: Pr 0.001 to 10⁴, Ra 10⁵ to 10¹⁰.
 - Where no direct simulation of the same geometry exists, the reference is the Grossmann–Lohse theory (Grossmann and Lohse 2000) with the coefficients of Stevens, van der Poel, Grossmann and Lohse 2013, fit S2, called **the GL fit** below. The sweep asks where that fit holds for this cell.
 - Of the 617 rows of the case table, 311 carry a verdict of the convergence ladder (judge table of 2026-10-26); **155 current-settings rows on the resolved mesh** form the evidence shown here.
-- Twelve findings follow, each with its evidence, our confidence and the question we would like your opinion on. Every number is the one report 09 of the study (revision 2, 2026-10-26) holds, generated from the judge table; nothing was computed for the slides.
+- Twelve findings follow, each with its evidence, our confidence and the question we would like your opinion on. Every number is the one report 09 of the study (revision 3, 2026-10-26) holds, generated from the judge table; nothing was computed for the slides.
 
 ## The flow and the cell
 
@@ -57,7 +57,7 @@ format:
 - Typical grids: 32×32×48 at (7, 10⁶), 48×48×80 at (7, 10⁷), 80×80×160 at (7, 10⁸), 160×160×320 at (7, 10⁹), 448×448×768 at (0.71, 10¹⁰).
 - Two coarser families, a relaxed bulk rule above two million cells and meshes mapped from the OpenFOAM campaign, were withdrawn on 2026-10-10 and serve only as comparison data (finding 4).
 - Every closure run starts from a developed field of a no-model run on the same grid or a coarsened one. Its averaging window is at least 200 t_f and is judged by the ladder: an overshoot test on the running mean; **Check A**, stationarity gated on the window's own sampling error; **Check A2**, flatness of the time-mean heat-flux profile Nu(z) within 3 %; **Check B**, deviation from the reference within 3 % widened by the reference's spread; **Check C**, the dissipation estimators within 5 % of the wall value.
-- A row that fails Check A is extended in 200 t_f steps, so the windows at Pr ≥ 50 reach up to 1600 t_f. Since 2026-10-23 Check A can pass **with a caveat** (pass*): a drift beyond its noise but below the fixed 1 %, or a window the user accepted after reading the volume budget (next slide); such windows are drawn filled with a dark edge and marked * in the tables.
+- A row that fails Check A is extended in 200 t_f steps, so the windows at Pr ≥ 50 reach up to 1600 t_f. Since 2026-10-23 Check A can pass **with a caveat** (pass*): a drift beyond its noise but below the fixed 1 %, or a window the user accepted after reading the volume budget (next slide). Such windows are drawn and tabulated as any other stationary window.
 :::
 
 ## Measured quantities and references
@@ -89,8 +89,8 @@ $$\frac{d\langle b\rangle_V}{dt} = \kappa\,(Nu_{bot} - Nu_{top}), \qquad \kappa 
 :::::: {.columns}
 :::: {.column width="50%"}
 ::: {.xsmall}
-1. Above Pr ≈ 2.5 the wall Nusselt number does not depend on Pr at fixed Ra, within about 2.5 %, from Ra 3×10⁶ to 3×10⁸; the GL fit falls by 5 to 13 % over the same range.
-2. The fit serves as a 3 % reference only at Pr 0.25 to 7 for Ra 10⁷ to 10⁹; it is 6 to 15 % high at Ra 10⁵ and 11 to 26 % low at Pr ≤ 0.1.
+1. Above Pr ≈ 2.5 the wall Nusselt number does not depend on Pr at fixed Ra, within about 2.5 %, from Ra 3×10⁶ to 10⁹; the GL fit falls by 5 to 13 % over the same range.
+2. The fit serves as a 3 % reference only in a band around Pr 1 that narrows with Ra, to Pr ≤ 0.71 at Ra ≥ 10⁸; it is 6 to 15 % high at Ra 10⁵, 11 to 26 % low at Pr ≤ 0.1 and 2 to 19 % low above the band at Ra ≥ 10⁷.
 3. The box reads 4 to 7.5 % above the closed-cube direct simulations at Pr 0.71, with and without the closure; about +3.6 % of it is the periodic span, measured on one grid.
 4. The horizontal cell governs the level: coarse horizontal grids read 20 to 65 % high, and doubling the horizontal count on the resolved mesh still lowers Nu by 2 to 4.5 %.
 5. The closure's whole effect on Nu is within ±2 % at every rung tested and changes sign.
@@ -109,57 +109,63 @@ $$\frac{d\langle b\rangle_V}{dt} = \kappa\,(Nu_{bot} - Nu_{top}), \qquad \kappa 
 ::::
 ::::::
 
-## 1. Above Pr ≈ 2.5 the wall Nusselt number does not depend on Pr at fixed Ra, within about 2.5 %, while the GL fit falls by 5 to 13 %
+## 1. Above Pr ≈ 2.5 the wall Nusselt number does not depend on Pr at fixed Ra, within about 2.5 %, from Ra 3×10⁶ to 10⁹, while the GL fit falls by 5 to 13 %
 
 :::::: {.columns}
 :::: {.column width="60%"}
 ![](figs/F1_nu_vs_pr.png){width="100%"}
 
 ::: {.cap}
-Figure 1. Nu_wall against Pr at eight Ra for every current-settings strict row with a record long enough for a verdict (judge table of 2026-10-26). Circles: the closure with the explicit scheme; squares: vertically implicit diffusion where it carries no bias; orange diamonds: no-model controls; filled: stationary window; dark edge: stationary with a caveat; ring: finer-mesh twin; error bars δNu. Grey line: GL fit S2, dotted: fit S3; open black diamonds: closed-cube direct simulations (Xu et al. 2019, Soucasse et al. 2019); open black square: the group's OpenFOAM model-free closed cube at (0.1, 10⁷).
+Figure 1. Nu_wall against Pr at eight Ra for every current-settings strict row with a record long enough for a verdict (judge table of 2026-10-26). Circles: the closure with the explicit scheme; squares: vertically implicit diffusion where it carries no bias; orange diamonds: no-model controls; filled: stationary window; ring: finer-mesh twin; error bars δNu. Grey line: GL fit S2, dotted: fit S3; open black diamonds: closed-cube direct simulations (Xu et al. 2019, Soucasse et al. 2019); open black square: the group's OpenFOAM model-free closed cube at (0.1, 10⁷).
 :::
 ::::
 :::: {.column width="40%" .evidence}
-**Evidence** (stationary base rows at Pr ≥ 2.5). Ra 10⁷: Pr 2.5 to 1000 read 17.0 to 17.8 (±2.3 % about 17.4) while the fit falls from 17.26 to 14.95. Ra 10⁸: 34.4 to 34.7 from Pr 2.5 to 345 (±0.4 %) against 32.95 to 29.67. Ra 3×10⁷: 23.6 to 24.3 (Pr 2.5 to 345) against a fit falling by 11 %; Ra 3×10⁸: 47.5 to 48.2 (Pr 7 to 145.7) against 45.02 to 42.57.
+**Evidence** (stationary base rows at Pr ≥ 2.5). Ra 10⁷: Pr 2.5 to 1000 read 17.0 to 17.8 (±2.3 % about 17.4) while the fit falls from 17.26 to 14.95. Ra 10⁸: 34.4 to 34.7 from Pr 2.5 to 345 (±0.4 %) against 32.95 to 29.67. Ra 3×10⁷: 23.6 to 24.3 (Pr 2.5 to 345) against a fit falling by 11 %; Ra 3×10⁸: 47.5 to 48.2 (Pr 7 to 145.7) against 45.02 to 42.57; Ra 10⁹: 68.3 to 69.8 (Pr 2.5 to 145.7, ±1.1 %) against 64.84 to 61.54. A Ra counts as flat when its stationary rows at Pr ≥ 2.5 span at least a decade and lie within ±3 %.
 
 Below Pr 2.5 the value falls: Pr 0.71 reads 3 to 4 % below the middle of the plateau at Ra 10⁷ and 10⁸. At Ra 10⁵ the rows from Pr 0.25 to 1000 form a plateau at 4.5 to 4.8 where the fit runs at 4.8 to 5.4; the accepted row at (2.5, 10⁵), 195, reads 4.14 and its refinement twin is pulled.
 
 **Confidence.** High for the shape: one mesh rule, closure and window policy per Ra, and the finer-mesh twins lower the Pr 7 to 100 rows by similar amounts. The level of the plateau is mesh-dependent (finding 4). Register: P-H5 supported, M-H3 favoured over M-H2.
 
 ::: {.question}
-**Question.** Is a Pr-independent plate flux above Pr ≈ 3 at Ra 10⁷ to 3×10⁸ what you expect for a cell of aspect ratio one? Which measurements or simulations at Pr ≥ 100 in a closed cell would you trust as an anchor for the level (Silano, Sreenivasan and Verzicco 2010; Horn, Shishkina and Wagner 2013; Li et al. 2021)?
+**Question.** Is a Pr-independent plate flux above Pr ≈ 3 at Ra 3×10⁶ to 10⁹ what you expect for a cell of aspect ratio one? Which measurements or simulations at Pr ≥ 100 in a closed cell would you trust as an anchor for the level (Silano, Sreenivasan and Verzicco 2010; Horn, Shishkina and Wagner 2013; Li et al. 2021)?
 :::
 ::::
 ::::::
 
-## 2. The GL fit serves as a 3 % reference for this cell only at Pr 0.25 to 7 for Ra 10⁷ to 10⁹
+## 2. The GL fit serves as a 3 % reference for this cell only in a band around Pr 1 that narrows with Ra, to Pr ≤ 0.71 at Ra ≥ 10⁸
 
-:::::: {.columns}
-:::: {.column width="58%"}
-::: {.t55}
+::: {.t45}
 | Ra | Pr range | rows | Nu_wall/Nu_GL − 1 | reading |
 |---|---|---|---|---|
-| 10⁵ | 0.005 to 10⁴ | 18 (+2 not stationary) | −23 to −6 % (−12.6 to −10.8 %) | the fit is high at every Pr; the rows form a plateau at 4.1 to 4.8 from Pr 0.25 to 1000 |
-| 10⁶ to 3×10⁶ | 0.01 to 0.1 | 7 | +11 to +26 % | the fit is low at the low-Pr end |
-| 10⁶ | 0.25 to 25 | 7 | −7 to +1 % | within 3 % only at Pr 0.25 and 0.71 |
-| 10⁶ | 50 to 1000 | 5 | +5 to +12 % | the rows above the roll boundary (finding 7) |
-| 10⁷ | 0.25 to 11.7 | 17 | −2 to +2 % | the fit serves |
-| 10⁷ | 25 to 10⁴ | 11 (+4 not stationary) | +2 to +19 % (+3.5 to +11.4 %) | the fit is low, growing with Pr; +2 to +7 % after horizontal refinement at Pr 25 to 100 |
-| 3×10⁷ | 0.25 to 7 | 4 | +1 to +3 % | the fit serves |
-| 3×10⁷ | 11.7 to 10⁴ | 6 (+3 not stationary) | +4 to +17 % (+12.1 to +23.0 %) | the fit is low |
-| 10⁸ | 0.25 to 0.71 | 2 | −1 to +1 % | the fit serves |
-| 10⁸ | 2.5 to 1000 | 7 (+2 not stationary) | +5 to +17 % (+11.4 to +41.6 %) | the fit is low; +0.4 and +0.8 % after horizontal refinement at Pr 2.5 and 7 |
-| 3×10⁸ | 0.71 | 1 | 0 % | the fit serves |
-| 3×10⁸ | 7 to 345 | 5 (+1 not stationary) | +6 to +13 % (+16.5 %) | the fit is low |
-| 10⁹ | 0.71 to 7 | 3 | +2 to +6 % | within 3 % at Pr 0.71 only |
+| 10⁵ | 0.005 to 10⁴ | 18 (+2 not stationary) | −22.8 to −5.9 % (−12.6 to −10.8 %) | the fit is high; the rows form a plateau at 4.5 to 4.8 from Pr 0.25 to 1000 |
+| 10⁶ | 0.01 to 0.1 | 4 | +11.3 to +17.8 % | the fit is low |
+| 10⁶ | 0.25 to 0.71 | 3 | −3.0 to +1.2 % | the fit serves |
+| 10⁶ | 2.5 to 25 | 4 | −7.2 to −4.1 % | the fit is high |
+| 10⁶ | 50 to 3000 | 5 (+1 not stationary) | +4.8 to +12.2 % (+3.9 %) | the fit is low; the rows above the roll boundary (finding 7) |
+| 3×10⁶ | 0.025 to 0.1 | 3 | +12.5 to +26.3 % | the fit is low |
+| 3×10⁶ | 0.71 to 7 | 2 | −1.0 to −0.9 % | the fit serves |
+| 3×10⁶ | 11.7 to 10⁴ | 6 (+3 not stationary) | +4.1 to +12.8 % (+10.2 to +15.6 %) | the fit is low |
+| 10⁷ | 0.05 to 0.1 | 2 | +12.6 to +21.8 % | the fit is low |
+| 10⁷ | 0.25 to 11.7 | 17 | −2.4 to +2.4 % | the fit serves; after horizontal refinement −2.1 % at Pr 7 |
+| 10⁷ | 25 to 10⁴ | 11 (+4 not stationary) | +2.5 to +18.8 % (+3.5 to +11.4 %) | the fit is low; after horizontal refinement +2.4 % at Pr 25, +4.2 % at Pr 50 and +7.4 % at Pr 100 |
+| 3×10⁷ | 0.25 to 7 | 4 | +1.3 to +2.9 % | the fit serves |
+| 3×10⁷ | 11.7 to 10⁴ | 6 (+3 not stationary) | +4.3 to +17.3 % (+12.1 to +23.0 %) | the fit is low |
+| 10⁸ | 0.25 to 0.71 | 2 | −0.9 to +1.3 % | the fit serves |
+| 10⁸ | 2.5 to 1000 | 7 (+2 not stationary) | +4.9 to +16.6 % (+11.4 to +41.6 %) | the fit is low; after horizontal refinement +0.4 % at Pr 2.5 and +0.8 % at Pr 7 |
+| 3×10⁸ | 0.71 | 1 | +0.3 % | the fit serves |
+| 3×10⁸ | 7 to 345 | 5 (+1 not stationary) | +5.5 to +13.3 % (+16.5 %) | the fit is low |
+| 10⁹ | 0.71 | 1 | +2.5 % | the fit serves |
+| 10⁹ | 2.5 to 145.7 | 5 | +5.3 to +13.4 % | the fit is low |
 :::
 
 ::: {.cap}
-Table 2. Range of Nu_wall/Nu_GL − 1 over the stationary strict base rows per Ra and Pr range (twins and controls excluded), with the number of rows; in parentheses the rows not yet stationary (report 04, Table 6, with the rows judged since).
+Table 2. For each Ra, the stationary strict base rows (twins and controls excluded) grouped into Pr ranges of one class (within 3 % of the fit, below it, above it), with the number of rows and the range of Nu_wall/Nu_GL − 1; in parentheses the rows not yet stationary.
 :::
-::::
-:::: {.column width="42%" .evidence}
-**Evidence.** The low-Pr side rests on (0.1, 10⁶) +11.3 %, (0.05, 10⁶) +17.4 %, (0.025, 10⁶) +17.8 %, (0.01, 10⁶) +14.2 %, (0.1, 3×10⁶) +12.5 %, (0.05, 3×10⁶) +21.6 % and (0.025, 3×10⁶) +26.3 %; the high-Pr side on the base rows of Table 1 and the Pr 345 to 10⁴ rows of Table 2 (2 to 19 % below the fit at Pr ≥ 25, Ra ≥ 10⁷); the Ra 10⁵ side on 17 stationary rows from Pr 0.005 to 10⁴, all 6 to 15 % below the fit, the accepted row 195 at −22.8 %, and 2 rows not yet stationary at 11 to 13 % below it.
+
+## 2 (continued). Where the GL fit serves, and by how much it departs elsewhere
+
+:::: {.evidence}
+**Evidence.** The low-Pr side rests on (0.1, 10⁶) +11.3 %, (0.05, 10⁶) +17.4 %, (0.025, 10⁶) +17.8 %, (0.01, 10⁶) +14.2 %, (0.1, 3×10⁶) +12.5 %, (0.05, 3×10⁶) +21.6 % and (0.025, 3×10⁶) +26.3 %; the high-Pr side on the base rows of Table 1 and the Pr 345 to 10⁴ rows of Table 2 (2 to 19 % above the fit beyond the band at Ra ≥ 10⁷; the band is Pr 0.25 to 0.71 at Ra 10⁶; Pr 0.71 to 7 at Ra 3×10⁶; Pr 0.25 to 11.7 at Ra 10⁷; Pr 0.25 to 7 at Ra 3×10⁷; Pr 0.25 to 0.71 at Ra 10⁸; Pr 0.71 at Ra 3×10⁸ and 10⁹); the Ra 10⁵ side on 17 stationary rows from Pr 0.005 to 10⁴, all 6 to 15 % below the fit, the accepted row 195 at −22.8 %, and 2 rows not yet stationary at 11 to 13 % below it.
 
 **Confidence.** High as a description of the fit against these rows; the box offset (finding 3) and the mesh dependence (finding 4) move the level by a few per cent and do not change the map. Register row G-1.
 
@@ -167,7 +173,6 @@ Table 2. Range of Nu_wall/Nu_GL − 1 over the stationary strict base rows per R
 **Question.** The fit's coefficients were fitted mainly to data at Ra ≥ 10⁶ and Pr 0.7 to 7, with mercury at Pr 0.025 as the low-Pr anchor. Do you read the departures at Ra 10⁵ (near the onset of time dependence) and at Pr 0.01 to 0.1 as the fit being extrapolated, and which box or cube data at Ra 10⁵ to 10⁶ would you compare with instead?
 :::
 ::::
-::::::
 
 ## 3. The box reads 4 to 7.5 % above the closed-cube direct simulations at Pr 0.71, with and without the closure; the same grid as cube and as box differs by +3.6 %
 
@@ -431,15 +436,15 @@ Figure 10. Acceptance test of the corrected implicit scheme at (1000, 10⁷) (re
 | 7 | 8.57 ± 0.4 % (32×32×48, 178); GL 9.24 | 17.35 ± 0.3 % (48×48×96, 154); GL 17.05; twin 16.69 ± 0.6 % (96×96×160, 164) | 23.83 ± 0.4 % (64×64×112, 104); GL 23.16 | 34.45 ± 0.3 % (80×80×160, 275); GL 32.67; twin 32.92 ± 0.5 % (128×128×256, 166) |
 | 11.7 | 8.66 ± 0.3 % (32×32×48, 223); GL 9.11 | 17.28 ± 0.4 % (48×48×80, 249); GL 16.88 | 23.96 ± 0.3 % (64×64×112, 405); GL 22.96 | 34.53 ± 0.3 % (80×80×144, 277); GL 32.43; twin 34.72 ± 0.3 % (80×80×288, 435) |
 | 25 | 8.54 ± 0.1 % (32×32×48, 225); GL 8.91 | 17.51 ± 0.3 % (48×48×80, 251); GL 16.56; twin 16.96 ± 0.3 % (96×96×160, 430) | 23.81 ± 0.3 % (64×64×112, 105); GL 22.59 | 34.57 ± 0.3 % (80×80×144, 279); GL 32.00 |
-| 50 | 9.23 ± 0.2 % (32×32×48, 227); GL 8.71; twin 8.90 ± 0.0 %* (32×32×96, 463) | 17.28 ± 0.4 % (48×48×80, 253); GL 16.22; twin 16.90 ± 0.4 % (96×96×160, 431) | 23.61 ± 0.4 % (64×64×112, 406); GL 22.18 | 34.71 ± 0.3 % (80×80×144, 281); GL 31.51 |
+| 50 | 9.23 ± 0.2 % (32×32×48, 227); GL 8.71; twin 8.90 ± 0.0 % (32×32×96, 463) | 17.28 ± 0.4 % (48×48×80, 253); GL 16.22; twin 16.90 ± 0.4 % (96×96×160, 431) | 23.61 ± 0.4 % (64×64×112, 406); GL 22.18 | 34.71 ± 0.3 % (80×80×144, 281); GL 31.51 |
 | 100 | 9.44 ± 0.3 % (32×32×48, 229); GL 8.54; twin 9.30 ± 0.1 % (32×32×96, 429) | 17.52 ± 0.3 %† (48×48×80, 255); GL 15.85; twin 17.02 ± 0.6 % (96×96×160, 601) | 23.92 ± 0.3 % (64×64×112, 129); GL 21.70 | 34.44 ± 0.4 %† (80×80×144, 283); GL 30.93 |
 | 145.7 | 9.53 ± 0.2 % (32×32×48, 231); GL 8.49; twin 9.39 ± 0.1 % (32×32×96, 464) | 17.50 ± 0.4 % (48×48×80, 257); GL 15.63 | 23.80 ± 0.3 % (64×64×112, 407); GL 21.43 | 34.44 ± 0.3 % (80×80×144, 285); GL 30.57 |
-| 345 | 9.52 ± 0.1 %* (32×32×48, 233); GL 8.50 | 17.44 ± 0.5 % (48×48×80, 259); GL 15.19 | — | 34.59 ± 0.3 % (80×80×144, 287); GL 29.67 |
+| 345 | 9.52 ± 0.1 % (32×32×48, 233); GL 8.50 | 17.44 ± 0.5 % (48×48×80, 259); GL 15.19 | — | 34.59 ± 0.3 % (80×80×144, 287); GL 29.67 |
 | 1000 | 9.09 ± 1.0 % (32×32×48, 235); GL 8.67 | 17.77 ± 0.5 % (48×48×80, 261); GL 14.95 | 22.50 ± 1.1 %† (64×64×96, 130); GL 20.08 | — |
 :::
 
 ::: {.cap}
-Table 1. Nu_wall ± δNu (grid N_h×N_h×N_z, case) on the base strict row of each rung at Ra 10⁶, 10⁷, 3×10⁷ and 10⁸, the GL fit S2 at the rung, and the finer-mesh twin where one is judged (twin − parent in Table 4). † marks a window that is not stationary, * a window that passes Check A with a caveat.
+Table 1. Nu_wall ± δNu (grid N_h×N_h×N_z, case) on the base strict row of each rung at Ra 10⁶, 10⁷, 3×10⁷ and 10⁸, the GL fit S2 at the rung, and the finer-mesh twin where one is judged (twin − parent in Table 4). † marks a window that is not stationary.
 :::
 
 ## What the hypothesis register now says
@@ -459,13 +464,13 @@ Table 1. Nu_wall ± δNu (grid N_h×N_h×N_z, case) on the base strict row of ea
 - **Mesh convergence of the plate flux** is shown to one level of horizontal refinement at five rungs and to none at Ra ≥ 3×10⁸.
 - **The windows at Pr ≥ 345 hold few independent samples**: the integral time is about 28 t_f, so 200 t_f hold only four, and those windows are longer.
 - **The state label of the ladder** rests on the antisymmetry of one profile; the boundary of finding 6 rests on the rows with two-dimensional output (24 rows in report 05).
-- **The corrected implicit reruns are in flight**: the high-Pr rows at Ra 3×10⁶ to 3×10⁸ that carry squares in Figure 1 rest on 200 to 400 t_f windows.
+- **The corrected implicit reruns are in flight**: the high-Pr rows at Ra 3×10⁶ to 10⁹ that carry squares in Figure 1 rest on 200 to 400 t_f windows.
 - **One closure, one constant, one box**; the closed-cube twins judged since revision 1 are reported as numbers only.
 
 ## Conclusions, and what we propose to run next
 
 ::: {.small}
-The sweep gives, on resolved meshes with sampling errors below 1 %, a plate flux independent of Pr above Pr ≈ 2.5 from Ra 3×10⁶ to 3×10⁸, a map of where the GL fit serves for this cell, a roll boundary at a fixed wind Reynolds number with the flux unchanged across it at Ra ≥ 10⁷, a kinetic layer that saturates with Pr, and a core shear rate above the theory's trend at Ra ≥ 3×10⁸. The level of the flux is known to a few per cent and is set by the horizontal cell and the geometry, not by the closure.
+The sweep gives, on resolved meshes with sampling errors below 1 %, a plate flux independent of Pr above Pr ≈ 2.5 from Ra 3×10⁶ to 10⁹, a map of where the GL fit serves for this cell, a roll boundary at a fixed wind Reynolds number with the flux unchanged across it at Ra ≥ 10⁷, a kinetic layer that saturates with Pr, and a core shear rate above the theory's trend at Ra ≥ 3×10⁸. The level of the flux is known to a few per cent and is set by the horizontal cell and the geometry, not by the closure.
 
 The next runs, on which we would value your view of priorities, were submitted on 2026-10-23 (report 10, Table 5):
 
@@ -500,7 +505,7 @@ Figure 11. (a) The time step of the vertically implicit scheme over that of the 
 :::::: {.columns}
 :::: {.column width="50%"}
 ::: {.xsmall}
-1. Is a Pr-independent plate flux above Pr ≈ 3 at Ra 10⁷ to 3×10⁸ what you expect for a cell of aspect ratio one, and which Pr ≥ 100 data in a closed cell would anchor the level?
+1. Is a Pr-independent plate flux above Pr ≈ 3 at Ra 3×10⁶ to 10⁹ what you expect for a cell of aspect ratio one, and which Pr ≥ 100 data in a closed cell would anchor the level?
 2. Are the departures from the GL fit at Ra 10⁵ and at Pr 0.01 to 0.1 the fit being extrapolated, and which box or cube data at Ra 10⁵ to 10⁶ would you compare with?
 3. How much more heat should a periodic-span cell carry than a closed cube at Ra 10⁶ to 10⁷, and would a closed-cube twin of a strict row be the decisive test?
 4. What horizontal resolution relative to δ_th is converged for the plate flux at Ra 10⁷ to 10⁸: about a quarter of δ_th at four times the cost?
@@ -521,7 +526,7 @@ Figure 11. (a) The time step of the vertically implicit scheme over that of the 
 ::::::
 
 ::: {.small .muted}
-Report 09 (revision 2, 2026-10-26) with the full evidence: `31_pr_ra_sweep/09_findings_for_collaborator_2026-10-22/REPORT.html` (link in its `PUBLISHED.txt`).
+Report 09 (revision 3, 2026-10-26) with the full evidence: `31_pr_ra_sweep/09_findings_for_collaborator_2026-10-22/REPORT.html` (link in its `PUBLISHED.txt`).
 :::
 
 ## Backup. Table 4: finer-mesh twins of strict rows
@@ -544,7 +549,7 @@ Report 09 (revision 2, 2026-10-26) with the full evidence: `31_pr_ra_sweep/09_fi
 :::
 
 ::: {.cap}
-Table 4. Parent and twin (grid, case), the refinement, twin − parent in per cent of the parent, and the combined sampling error √(δNu₁² + δNu₂²). Twin 601 runs the corrected implicit scheme of finding 12 on a 100 t_f window; twin 463 passes Check A with a caveat.
+Table 4. Parent and twin (grid, case), the refinement, twin − parent in per cent of the parent, and the combined sampling error √(δNu₁² + δNu₂²). Twin 601 runs the corrected implicit scheme of finding 12 on a 100 t_f window.
 :::
 
 ::: {.small}

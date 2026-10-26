@@ -301,9 +301,9 @@ Table 5. Seeds and states at (100, 10⁷) on one grid and the Ra 10⁶ rows on b
 
 :::::: {.columns}
 :::: {.column width="55%" .evidence}
-**Evidence.** The three seeds at (100, 10⁷) read 17.45, 17.52 and 17.65, within 1.1 %, although one switches state; the rows above the boundary at Ra 10⁷ (Pr 145.7 to 1000: 17.50, 17.44 and 17.77) sit on the plateau. Seeds in one state agree to 0.2 to 0.3 %; at (25, 10⁷) a window holding 3 reversals reads 17.51 against 16.98 without one and the finer twin 16.96, so a window with reorientations can read 3.2 % high. At Ra 10⁶ the single rolls at Pr 0.25 to 25 read 8.38 to 8.95 (mean 8.69), the rows at Pr 50 to 345 9.23 to 9.53 on windows ending at 800 to 1400 t_f; the wall-refined twins (8.90, 9.30 and 9.39) lower them by 1.4 to 3.5 % and the horizontal twin of 229, judged since revision 1 (case 694, 64×64×48), by −3.1 %; neither closes the gap.
+**Evidence.** The three seeds at (100, 10⁷) read 17.45, 17.52 and 17.65, within 1.1 %, although one switches state; the rows above the boundary at Ra 10⁷ (Pr 145.7 to 1000: 17.50, 17.44 and 17.77) sit on the plateau. Seeds in one state agree to 0.2 to 0.3 %; at (25, 10⁷) a window holding 3 reversals reads 17.51 against 16.98 without one and the finer twin 16.96, so a window with reorientations can read 3.2 % high. At Ra 10⁶ the single rolls at Pr 0.25 to 25 read 8.38 to 8.95, the rows at Pr 50 to 345 9.23 to 9.53 on windows ending at 800 to 1400 t_f; the wall-refined twins (8.90, 9.30 and 9.39) and the horizontal twin of 229 (case 694, judged since: −3.1 %) do not close the gap.
 
-**Confidence.** High for the numbers; the reading of the Ra 10⁶ gap as a property of the flow without a wind (R5-H3) is one of two, the other that the 32×32×48 grid at Pr ≥ 50 is marginal in a way the twins do not test.
+**Confidence.** High for the numbers; the reading of the Ra 10⁶ gap as a property of the flow without a wind (R5-H3) is one of two, the other a marginal 32×32×48 grid at Pr ≥ 50.
 ::::
 :::: {.column width="45%"}
 ::: {.question}
